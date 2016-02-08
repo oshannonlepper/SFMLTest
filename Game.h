@@ -1,5 +1,13 @@
 #pragma once
+
+#include "ResourceManager.h"
 #include <SFML/Graphics.hpp>
+
+namespace Textures {
+	enum ID { Player };
+};
+
+typedef ResourceManager<sf::Texture, Textures::ID> TextureManager;
 
 class Game
 {
@@ -21,7 +29,9 @@ private:
 	bool m_isMovingLeft;
 	bool m_isMovingDown;
 
+	TextureManager m_textureManager;
 	sf::RenderWindow m_window;
-	sf::CircleShape m_player;
+	sf::Texture m_texture;
+	sf::Sprite m_player;
 };
 

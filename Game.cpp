@@ -1,11 +1,18 @@
 #include "Game.h"
-
-
+#include <iostream>
 
 Game::Game() : m_window(sf::VideoMode(800, 600), "SFML Application"), m_player() {
-	m_player.setRadius(40.f);
+
+	try {
+		m_textureManager.load(Textures::Player, "img/player.png");
+	}
+	catch (std::runtime_error& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+
+	m_player.setTexture(m_textureManager.get(Textures::Player));
 	m_player.setPosition(100.f, 100.f);
-	m_player.setFillColor(sf::Color::Cyan);
+	//m_player.setFillColor(sf::Color::Cyan);
 }
 
 Game::~Game() {
