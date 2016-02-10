@@ -30,3 +30,13 @@ void Ship::accelerate(sf::Vector2f vel)
 {
 	setVelocity(getVelocity() + vel);
 }
+
+unsigned int Ship::getCategory() const
+{
+	switch (m_characterType) {
+	case Player:
+		return Category::Player;
+	default:
+		return Category::Enemy;
+	}
+}

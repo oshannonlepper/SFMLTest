@@ -14,6 +14,7 @@ public:
 	Ship(ShipType type, const TextureManager& textures);
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 	void accelerate(sf::Vector2f vel);
+	unsigned int getCategory() const;
 private:
 	sf::Sprite m_sprite;
 	ShipType m_characterType;

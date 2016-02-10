@@ -36,18 +36,18 @@ void Game::run()
 
 void Game::processEvents()
 {
-	CommandQueue commands = m_world->getCommandQueue();
+	CommandQueue* commands = &m_world->getCommandQueue();
 
 	sf::Event ev;
 	while (m_window->pollEvent(ev))
 	{
-		m_player.handleEvent(ev, commands);
+		m_player.handleEvent(ev, *commands);
 
 		if (ev.type == sf::Event::Closed)
 			m_window->close();
 	}
 
-	m_player.handleRealtimeInput(commands);
+	m_player.handleRealtimeInput(*commands);
 }
 
 void Game::update(sf::Time delta)
